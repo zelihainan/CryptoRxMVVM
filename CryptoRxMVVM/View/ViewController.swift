@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
+    
+    let cryptoVM = CryptoViewModel()
+    let disposeBag = DisposeBag()
     var cryptoList = [Crypto]()
     
     override func viewDidLoad() {
@@ -18,19 +25,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        let url = URL(string: "https://raw.githubusercontent.com/atilsamancioglu/K21-JSONDataSet/master/crypto.json")!
-        WebService().downloadCurrencies(url: url) { result in
-            switch result {
-            case .success(let cryptos):
-                self.cryptoList = cryptos
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+        setUpBindings()
+        cryptoVM.requestData()
     }
+    
+    private func setUpBindings() {
+        
+        cryptoVM
+            .loading
+            .bind(to: self.indicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        cryptoVM
+            .error
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe { errorString in
+                print(errorString)
+            }
+            .disposed(by: disposeBag)
+            
+        cryptoVM
+            .cryptos
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe { cryptoArray in
+                self.cryptoList = cryptoArray
+                self.tableView.reloadData()
+            }
+            .disposed(by: disposeBag)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cryptoList.count

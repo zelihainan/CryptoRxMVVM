@@ -20,6 +20,10 @@
                                 <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="9OF-YW-4C3">
+                                <rect key="frame" x="0.0" y="404" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -31,6 +35,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicatorView" destination="9OF-YW-4C3" id="FeS-zp-ZHv"/>
                         <outlet property="tableView" destination="hWz-69-x1g" id="57J-d8-v3B"/>
                     </connections>
                 </viewController>
