@@ -17,31 +17,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hWz-69-x1g">
-                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="180" width="393" height="604"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="9OF-YW-4C3">
                                 <rect key="frame" x="0.0" y="404" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="UVL-8Q-50e">
+                                <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="R4o-Mr-NZc"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="P4n-5x-Pu0"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hWz-69-x1g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Fp-LH-lL9"/>
-                            <constraint firstItem="hWz-69-x1g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bll-Bh-Zct"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hWz-69-x1g" secondAttribute="bottom" id="Ikm-Mn-3W5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hWz-69-x1g" secondAttribute="trailing" id="mVG-rt-aRn"/>
+                            <constraint firstItem="hWz-69-x1g" firstAttribute="top" secondItem="UVL-8Q-50e" secondAttribute="bottom" constant="18" id="8Er-0K-XrB"/>
+                            <constraint firstItem="UVL-8Q-50e" firstAttribute="leading" secondItem="9OF-YW-4C3" secondAttribute="leading" id="AiV-iP-kJN"/>
+                            <constraint firstItem="hWz-69-x1g" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Fq6-YC-C3L"/>
+                            <constraint firstItem="hWz-69-x1g" firstAttribute="trailing" secondItem="9OF-YW-4C3" secondAttribute="trailing" id="hxK-6o-RNY"/>
+                            <constraint firstItem="hWz-69-x1g" firstAttribute="leading" secondItem="9OF-YW-4C3" secondAttribute="leading" id="ogM-R7-jod"/>
+                            <constraint firstItem="UVL-8Q-50e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uaC-cT-lVR"/>
+                            <constraint firstItem="UVL-8Q-50e" firstAttribute="trailing" secondItem="9OF-YW-4C3" secondAttribute="trailing" id="zRk-RV-y5X"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="indicatorView" destination="9OF-YW-4C3" id="FeS-zp-ZHv"/>
+                        <outlet property="searchBar" destination="UVL-8Q-50e" id="h0h-QH-fHU"/>
                         <outlet property="tableView" destination="hWz-69-x1g" id="57J-d8-v3B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="-27"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>
